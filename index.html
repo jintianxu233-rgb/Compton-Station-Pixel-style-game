@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>District 9 Interactive</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      touch-action: none;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      image-rendering: pixelated;
+      touch-action: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
+  <script src="./create_district9_game.js"></script>
+
+  <script>
+<!-- ✅ 检测是否是 iPad / iPhone / Android -->
+    const isMobile = /iPad|iPhone|iPod|Android/i.test(navigator.userAgent);
+
+    // ✅ 在移动端启用全屏显示（电脑不变）
+    window.addEventListener("load", () => {
+      const canvas = document.querySelector("canvas");
+      if (isMobile && canvas) {
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
+        canvas.style.objectFit = "contain";
+      } else if (canvas) {
+        // 💻 电脑端保持默认大小
+        canvas.style.width = "960px";
+        canvas.style.height = "640px";
+      }
+    });
+  </script>
+</body>
+</html>
